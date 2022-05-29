@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label:""
+        any
     }
     stages {
         stage('Build Clean') {
