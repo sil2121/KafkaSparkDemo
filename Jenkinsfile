@@ -1,4 +1,7 @@
 pipeline {
+    agent {
+        label:""
+    }
     stages {
         stage('Build Clean') {
             steps {
@@ -10,7 +13,7 @@ pipeline {
                 sh 'mvn compile -f pom.xml'
             }
         }
-        stage('Build Compile') {
+        stage('Build Install') {
             steps {
                 sh 'mvn install -f pom.xml'
             }
