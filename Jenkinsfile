@@ -2,7 +2,7 @@ pipeline {
     agent any
     stages {
         stage('Build Clean') {
-            env.JAVA_HOME="${tool 'jdk-18.0.1.1'}"
+
                        withMaven(
                         maven: 'M3',
                         mavenLocalRepo: '.repository') {
@@ -10,7 +10,6 @@ pipeline {
                     }
         }
         stage('Build Compile') {
-            env.JAVA_HOME="${tool 'jdk-18.0.1.1'}"
                        withMaven(
                         maven: 'M3',
                         mavenLocalRepo: '.repository') {
@@ -19,7 +18,6 @@ pipeline {
             }
         }
         stage('Build Install') {
-            env.JAVA_HOME="${tool 'jdk-18.0.1.1'}"
                        withMaven(
                         maven: 'M3',
                         mavenLocalRepo: '.repository') {
