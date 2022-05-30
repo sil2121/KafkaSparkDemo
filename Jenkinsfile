@@ -3,8 +3,7 @@ pipeline {
     stages {
         stage('Build Clean') {
                            steps {
-                                            sh 'printenv',
-                                            sh 'mvn clean -f pom.xml'
+                                            sh 'printenv'
                                         }
 
         }
