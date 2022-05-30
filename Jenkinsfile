@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    tools {
-        maven 'MavenTest'
-    }
     stages {
         stage('Build Clean') {
                            steps {
