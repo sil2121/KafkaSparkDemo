@@ -2,18 +2,29 @@ pipeline {
     agent any
     stages {
         stage('Build Clean') {
-            steps {
-                sh 'mvn clean -f pom.xml'
-            }
+            env.JAVA_HOME="${tool 'jdk-18.0.1.1'}"
+                       withMaven(
+                        maven: 'M3',
+                        mavenLocalRepo: '.repository') {
+                            sh "mvn clean install -U  -P${profile} -Dmaven.test.skip=true"
+                    }
         }
         stage('Build Compile') {
-            steps {
-                sh 'mvn compile -f pom.xml'
+            env.JAVA_HOME="${tool 'jdk-18.0.1.1'}"
+                       withMaven(
+                        maven: 'M3',
+                        mavenLocalRepo: '.repository') {
+                            sh "mvn compile -f pom.xml"
+                    }
             }
         }
         stage('Build Install') {
-            steps {
-                sh 'mvn install -f pom.xml'
+            env.JAVA_HOME="${tool 'jdk-18.0.1.1'}"
+                       withMaven(
+                        maven: 'M3',
+                        mavenLocalRepo: '.repository') {
+                           sh "mvn install -f pom.xml"
+                    }
             }
         }
     }
