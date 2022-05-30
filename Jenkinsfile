@@ -6,7 +6,7 @@ pipeline {
                        withMaven(
                         maven: 'M3',
                         mavenLocalRepo: '.repository') {
-                            sh "mvn clean install -U  -P${profile} -Dmaven.test.skip=true"
+                            sh "mvn clean -f pom.xml"
                     }
         }
         stage('Build Compile') {
@@ -15,7 +15,7 @@ pipeline {
                         maven: 'M3',
                         mavenLocalRepo: '.repository') {
                             sh "mvn compile -f pom.xml"
-                    }
+
             }
         }
         stage('Build Install') {
@@ -25,7 +25,6 @@ pipeline {
                         mavenLocalRepo: '.repository') {
                            sh "mvn install -f pom.xml"
                     }
-            }
         }
     }
 }
