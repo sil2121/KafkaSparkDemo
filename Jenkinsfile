@@ -3,20 +3,20 @@ pipeline {
     stages {
         stage('Build Clean') {
                            steps {
-                                            sh 'printenv'
-                                        }
+                                              sh '/home/silwang/maven/Maven/apache-maven-3.8.5/bin/mvn clean -f pom.xml'
+                                                                                  }
 
         }
         stage('Build Compile') {
                            steps {
-                                           sh 'mvn compile -f pom.xml'
+                                           sh '/home/silwang/maven/Maven/apache-maven-3.8.5/bin/mvn compile -f pom.xml'
                                        }
 
 
         }
         stage('Build Install') {
                           steps {
-                                          sh 'mvn clean -f pom.xml'
+                                          sh '/home/silwang/maven/Maven/apache-maven-3.8.5/bin/mvn install -f pom.xml'
                                       }
 
         }
