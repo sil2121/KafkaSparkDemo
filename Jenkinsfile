@@ -6,14 +6,18 @@ pipeline {
                        withMaven(
                         maven: 'M3',
                         mavenLocalRepo: '.repository') {
-                            sh "mvn clean -f pom.xml"
+                            steps {
+                                            sh 'mvn clean -f pom.xml'
+                                        }
                     }
         }
         stage('Build Compile') {
                        withMaven(
                         maven: 'M3',
                         mavenLocalRepo: '.repository') {
-                            sh "mvn compile -f pom.xml"
+                           steps {
+                                           sh 'mvn compile -f pom.xml'
+                                       }
 
             }
         }
@@ -21,7 +25,9 @@ pipeline {
                        withMaven(
                         maven: 'M3',
                         mavenLocalRepo: '.repository') {
-                           sh "mvn install -f pom.xml"
+                          steps {
+                                          sh 'mvn clean -f pom.xml'
+                                      }
                     }
         }
     }
